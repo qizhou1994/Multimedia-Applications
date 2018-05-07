@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zq.mediaplay.base.BaseActivity;
+import com.zq.mediaplay.camera.CameraPictureActivity;
 import com.zq.mediaplay.mediarecorder.RediaRecorderActivity;
 import com.zq.mediaplay.soundpool.SoundPoolActivity;
 import com.zq.mediaplay.surfacemediaplayer.SurfaceMediaPlayerActivity;
@@ -30,6 +31,7 @@ public class MainActivity extends BaseActivity {
         initAddView("音效",SoundPoolActivity.class);
         initAddView("videoview视频",VideoViewActivity.class);
         initAddView("surface视频",SurfaceMediaPlayerActivity.class);
+        initAddView("camera拍照",CameraPictureActivity.class);
     }
 
     /**
@@ -50,8 +52,8 @@ public class MainActivity extends BaseActivity {
 
         textView.setGravity(Gravity.CENTER);
 
-        textView.setTop(100);
-        textView.setBottom(100);
+
+        textView.setHeight(100);
 
         linearLayout.addView(textView);
         //添加分割线

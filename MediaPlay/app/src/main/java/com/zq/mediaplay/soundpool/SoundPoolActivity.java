@@ -11,15 +11,14 @@ import com.zq.mediaplay.R;
 
 import java.util.HashMap;
 
-public class SoundPoolActivity extends AppCompatActivity implements View.OnClickListener
-{
+public class SoundPoolActivity extends AppCompatActivity implements View.OnClickListener {
     Button bomb, shot, arrow;
     // 定义一个SoundPool
     SoundPool soundPool;
     HashMap<Integer, Integer> soundMap = new HashMap<>();
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sound_pool);
         bomb = (Button) findViewById(R.id.bomb);
@@ -43,13 +42,12 @@ public class SoundPoolActivity extends AppCompatActivity implements View.OnClick
         shot.setOnClickListener(this);
         arrow.setOnClickListener(this);
     }
+
     // 重写OnClickListener监听器接口的方法
     @Override
-    public void onClick(View source)
-    {
+    public void onClick(View source) {
         // 判断哪个按钮被单击
-        switch (source.getId())
-        {
+        switch (source.getId()) {
             case R.id.bomb:
                 soundPool.play(soundMap.get(1), 1, 1, 0, 0, 1);
                 soundPool.autoResume();
