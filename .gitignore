@@ -1,3 +1,9 @@
+
+buildCacheDir.lock
+/buildCacheDir
+.idea/
+
+
 # Built application files
 *.apk
 *.ap_

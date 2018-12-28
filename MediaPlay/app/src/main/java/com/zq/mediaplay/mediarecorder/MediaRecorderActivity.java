@@ -12,8 +12,6 @@ import android.widget.Toast;
 import com.zq.mediaplay.base.BaseActivity;
 import com.zq.mediaplay.R;
 
-import org.reactivestreams.Subscription;
-
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 
 
-public class RediaRecorderActivity extends BaseActivity
+public class MediaRecorderActivity extends BaseActivity
         implements View.OnClickListener {
     // 定义界面上的两个按钮
     ImageButton record, stop;
@@ -38,7 +36,7 @@ public class RediaRecorderActivity extends BaseActivity
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_redia_recorder);
+        setContentView(R.layout.activity_media_recorder);
         // 获取程序界面中的两个按钮
         record = (ImageButton) findViewById(R.id.record);
         stop = (ImageButton) findViewById(R.id.stop);

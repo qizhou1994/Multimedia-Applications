@@ -23,12 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mediarecorder.RediaRecorderActivity" />
+        <activity android:name=".mediarecorder.MediaRecorderActivity" />
         <activity android:name=".MediaMusicActivity" />
         <activity android:name=".soundpool.SoundPoolActivity" />
         <activity android:name=".surfacemediaplayer.SurfaceMediaPlayerActivity" />
         <activity android:name=".videoviewtest.VideoViewActivity" />
-        <activity android:name=".camera.CameraPictureActivity"></activity>
+        <activity android:name=".camera.CameraPictureActivity" />
+        <activity android:name=".mediarecorder.AudioRecordActivity"></activity>
     </application>
 
 </manifest>

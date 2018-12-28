@@ -50,7 +50,7 @@ dependencies {
 //    compile "com.squareup.retrofit2:converter-gson:${retrofit2Version}"
 //    compile "com.squareup.retrofit2:adapter-rxjava:${retrofit2Version}"
     // okhttp3
- /*   compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    /*   compile 'com.squareup.okhttp3:okhttp:3.2.0'
     compile 'com.squareup.okio:okio:1.6.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.1'*/
 

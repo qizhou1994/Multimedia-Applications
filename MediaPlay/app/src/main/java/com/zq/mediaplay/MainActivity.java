@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import com.zq.mediaplay.base.BaseActivity;
 import com.zq.mediaplay.camera.CameraPictureActivity;
-import com.zq.mediaplay.mediarecorder.RediaRecorderActivity;
+import com.zq.mediaplay.mediarecorder.AudioRecordActivity;
+import com.zq.mediaplay.mediarecorder.MediaRecorderActivity;
 import com.zq.mediaplay.soundpool.SoundPoolActivity;
 import com.zq.mediaplay.surfacemediaplayer.SurfaceMediaPlayerActivity;
 import com.zq.mediaplay.videoviewtest.VideoViewActivity;
@@ -27,11 +28,13 @@ public class MainActivity extends BaseActivity {
         linearLayout.setOrientation(LinearLayout.VERTICAL);
         setContentView(linearLayout);
         initAddView("音乐",MediaMusicActivity.class);
-        initAddView("录音",RediaRecorderActivity.class);
+        initAddView("MediaRecord录音",MediaRecorderActivity.class);
         initAddView("音效",SoundPoolActivity.class);
         initAddView("videoview视频",VideoViewActivity.class);
         initAddView("surface视频",SurfaceMediaPlayerActivity.class);
         initAddView("camera拍照",CameraPictureActivity.class);
+        initAddView("AudioRecord录音 ",AudioRecordActivity.class);
+
     }
 
     /**
