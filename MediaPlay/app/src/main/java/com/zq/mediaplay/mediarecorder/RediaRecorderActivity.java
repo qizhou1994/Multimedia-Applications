@@ -12,15 +12,16 @@ import android.widget.Toast;
 import com.zq.mediaplay.base.BaseActivity;
 import com.zq.mediaplay.R;
 
+import org.reactivestreams.Subscription;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.Observer;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+
 
 public class RediaRecorderActivity extends BaseActivity
         implements View.OnClickListener {
@@ -32,7 +33,7 @@ public class RediaRecorderActivity extends BaseActivity
 
     //显示录制的时间
     TextView textView;
-    private Subscription subscribe;
+    private Disposable subscribe;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +60,7 @@ public class RediaRecorderActivity extends BaseActivity
         }
         //解绑 必须放再   super.onDestroy();之前 因为会先失去引用但是 对象未被销毁释放
         if (subscribe != null) {
-            subscribe.unsubscribe();
+            subscribe.dispose();
             subscribe = null;
         }
         super.onDestroy();
@@ -78,25 +79,31 @@ public class RediaRecorderActivity extends BaseActivity
                     return;
                 }
                 //计时间
-                subscribe = Observable.interval(1, TimeUnit.SECONDS)
+                Observable.interval(1, TimeUnit.SECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Observer<Long>() {
+
                             @Override
-                            public void onCompleted() {
+                            public void onComplete() {
                                 Log.e("aa", "onCompleted=");
                             }
 
                             @Override
-                            public void onError(Throwable e) {
-                                Log.e("aa", "onError=" + e);
-                                e.printStackTrace();
+                            public void onSubscribe(Disposable d) {
+                                subscribe = d;
                             }
 
                             @Override
                             public void onNext(Long aLong) {
-                                textView.setText(aLong + " s");
-                                Log.e("aa", "along=" + aLong);
+
                             }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+
                         });
 
                 if (!Environment.getExternalStorageState().equals(
@@ -134,7 +141,7 @@ public class RediaRecorderActivity extends BaseActivity
             case R.id.stop:
                 //解绑
                 if (subscribe != null) {
-                    subscribe.unsubscribe();
+                    subscribe.dispose();
                     subscribe = null;
                 }
                 if (mRecorder != null && soundFile != null && soundFile.exists()) {
